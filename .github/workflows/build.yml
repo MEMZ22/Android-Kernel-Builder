@@ -165,6 +165,8 @@ jobs:
           args: ${{ steps.generate-args.outputs.args }}
         run: |
           echo "PATH Variable: $PATH"
+          which clang
+          clang --version
           make ${args} 
 
       - name: "💛 Upload Image"
