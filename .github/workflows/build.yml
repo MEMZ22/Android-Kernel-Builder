@@ -99,6 +99,7 @@ jobs:
           USE_CCACHE=1
           ccache -M ${CCACHE_MAXSIZE}
           ccache -z
+          V=1
 
 
           echo "ARCH=$ARCH" >> $GITHUB_ENV
@@ -140,7 +141,6 @@ jobs:
           fi
 
           curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s nongki
-          curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s nongki
 
           echo -e "\nCONFIG_KPROBES=y" >> ./arch/${{ env.ARCH }}/configs/${{ env.DEFCONFIG_NAME }}
           echo -e "\nCONFIG_HAVE_KPROBES=y" >> ./arch/${{ env.ARCH }}/configs/${{ env.DEFCONFIG_NAME }}
@@ -172,7 +172,7 @@ jobs:
           args: ${{ steps.generate-args.outputs.args }}
         run: |
           echo "PATH Variable: $PATH"
-          make ${args}
+          make ${args} 
 
       - name: "💛 Upload Image"
         uses: actions/upload-artifact@v4
