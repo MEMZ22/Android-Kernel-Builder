@@ -149,7 +149,7 @@ jobs:
           cat ./arch/${{ env.ARCH }}/configs/${{ env.DEFCONFIG_NAME }}
 
       
-      - name: "👍 Make defconfig"
+      - name: "👍 dos2unix"
         working-directory: ./${{ env.kernelDir }}/${{ env.kernelName }}
         env:
           args: ${{ steps.generate-args.outputs.args }}
