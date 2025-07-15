@@ -1,9 +1,9 @@
 [  {
     "kernelSource": {
       "name": "8150",
-      "repo": "https://github.com/MEMZ22/android_kernel_xiaomi_sm8150",
-      "branch": "android14",
-      "device": "raphael"
+      "repo": "https://github.com/crdroidandroid/android_kernel_xiaomi_sm8150/",
+      "branch": "15.0",
+      "device": "vendor/xiaomi/raphael.config"
     },
     "withKernelSU": true,
     "toolchains": [
