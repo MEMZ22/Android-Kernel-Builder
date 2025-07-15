@@ -52,7 +52,7 @@ jobs:
       - name: "⭐ Install prerequisites"
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential bc curl git zip ftp gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi libssl-dev lftp zstd wget libfl-dev python3 libarchive-tools
+          sudo apt-get install -y build-essential bc curl git zip ftp gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi libssl-dev lftp zstd wget libfl-dev python3 libarchive-tools ccache
 
       - name: "🌟 Clone kernel source => (${{ env.kernelRepo }})"
         working-directory: ./${{ env.kernelDir }}
@@ -92,6 +92,14 @@ jobs:
           CLANG_TRIPLE=$(echo $params | jq -r ".CLANG_TRIPLE")
           AR=$(echo $params | jq -r ".AR")
           CC=$(echo $params | jq -r ".CC")
+          CCACHE_DIR=$(pwd)/ccache
+          CCACHE_MAXSIZE=2G
+          CCACHE_SLOPPINESS=file_macro,locale,time_macros
+          CCACHE_COMPRESS=true
+          USE_CCACHE=1
+          ccache -M ${CCACHE_MAXSIZE}
+          ccache -z
+
 
           echo "ARCH=$ARCH" >> $GITHUB_ENV
 
