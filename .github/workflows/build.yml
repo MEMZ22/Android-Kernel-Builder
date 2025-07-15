@@ -155,7 +155,7 @@ jobs:
           args: ${{ steps.generate-args.outputs.args }}
         run: |
           echo "PATH Variable: $PATH"
-          apt-get install -y dos2unix
+          sudo apt-get install -y dos2unix
           dos2unix arch/arm64/boot/dts/qcom/raphael-pinctrl.dtsi
       - name: "👍 Make defconfig"
         working-directory: ./${{ env.kernelDir }}/${{ env.kernelName }}
