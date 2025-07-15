@@ -150,14 +150,6 @@ jobs:
           cat ./arch/${{ env.ARCH }}/configs/${{ env.DEFCONFIG_NAME }}
 
       
-      - name: "👍 dos2unix"
-        working-directory: ./${{ env.kernelDir }}/${{ env.kernelName }}
-        env:
-          args: ${{ steps.generate-args.outputs.args }}
-        run: |
-          echo "PATH Variable: $PATH"
-          sudo apt-get install -y dos2unix
-          dos2unix arch/arm64/boot/dts/qcom/raphael-pinctrl.dtsi
       - name: "👍 Make defconfig"
         working-directory: ./${{ env.kernelDir }}/${{ env.kernelName }}
         env:
