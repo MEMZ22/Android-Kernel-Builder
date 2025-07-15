@@ -1,9 +1,9 @@
 [  {
     "kernelSource": {
-      "name": "8150",
-      "repo": "https://github.com/crdroidandroid/android_kernel_xiaomi_sm8150/",
-      "branch": "15.0",
-      "device": "vendor/xiaomi/raphael.config"
+      "name": "mt6768",
+      "repo": "https://github.com/Yourfurina/kernel_xiaomi_mt6768",
+      "branch": "lineage-21",
+      "device": "deconfig"
     },
     "withKernelSU": true,
     "toolchains": [
