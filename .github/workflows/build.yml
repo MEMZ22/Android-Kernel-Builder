@@ -92,19 +92,19 @@ jobs:
           CLANG_TRIPLE=$(echo $params | jq -r ".CLANG_TRIPLE")
           AR=$(echo $params | jq -r ".AR")
           CC=$(echo $params | jq -r ".CC")
-          CCACHE_DIR=$(pwd)/ccache
-          CCACHE_MAXSIZE=2G
-          CCACHE_SLOPPINESS=file_macro,locale,time_macros
-          CCACHE_COMPRESS=true
-          USE_CCACHE=1
+          export CCACHE_DIR=$(pwd)/ccache
+          export CCACHE_MAXSIZE=2G
+          export CCACHE_SLOPPINESS=file_macro,locale,time_macros
+          export CCACHE_COMPRESS=true
+          export USE_CCACHE=1
           ccache -M ${CCACHE_MAXSIZE}
           ccache -z
-          V=1
+          export V=1
 
 
           echo "ARCH=$ARCH" >> $GITHUB_ENV
 
-          args="-j$(nproc --all)"
+          args="-j11"
           if [ -n "${{ env.OUT_DIR }}" ]; then
             mkdir -p $(pwd)/${{ env.OUT_DIR }}
             args="$args O=$(pwd)/${{ env.OUT_DIR }}"
