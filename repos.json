@@ -26,7 +26,6 @@
       "CLANG_TRIPLE": "aarch64-linux-gnu-",
       "AR": "",
       "CC": "clang"
-      "env.ADD_KPROBES_CONFIG":"",
     }
   }
 ]
